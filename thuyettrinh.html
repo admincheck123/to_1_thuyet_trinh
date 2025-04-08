@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Thuyết Trình - Kiểm thử phần mềm</title>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="tt.css">
+</head>
+<body>
+
+  <header>
+    <div class="logo">
+      <h1>Kiểm thử phần mềm</h1>
+    </div>
+    <nav>
+      <ul>
+        <li><a href="#slide-1" onclick="goToSlide(0)">Kiểm thử viên</a></li>
+        <li><a href="#slide-2" onclick="goToSlide(1)">Người quản lý kiểm thử</a></li>
+        <li><a href="#slide-3" onclick="goToSlide(2)">Nhà thiết kế UI/UX</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <div class="carousel">
+    <div class="slide" id="slide-1">
+      <div class="content">
+        <i class="fas fa-user-check icon"></i>
+        <h1>Kiểm thử viên</h1>
+        <p><strong>SGK:</strong> Kiểm thử viên là người chạy thử phần mềm để xác nhận rằng phần mềm đáp ứng được các yêu cầu thiết kế, xây dựng và vận hành.</p>
+        <p><strong>Mô tả công việc:</strong> Kiểm thử viên chịu trách nhiệm kiểm tra phần mềm để đảm bảo chất lượng và tính ổn định của sản phẩm trước khi phát hành.</p>
+        <ul>
+          <li>Lập kế hoạch và thực hiện các bài kiểm tra phần mềm.</li>
+          <li>Ghi nhận và báo cáo các lỗi phần mềm.</li>
+          <li>Xác minh các bản vá lỗi và cập nhật phần mềm.</li>
+        </ul>
+      </div>
+    </div>
+    
+    <div class="slide" id="slide-2">
+      <div class="content">
+        <i class="fas fa-user-tie icon"></i>
+        <h1>Người quản lý kiểm thử</h1>
+        <p><strong>SGK:</strong> Người quản lý kiểm thử lập quy trình kiểm thử, viết các kịch bản chạy thử và phân công công việc cho các kiểm thử viên.</p>
+        <p><strong>Mô tả công việc:</strong> Giám sát và điều phối các hoạt động kiểm thử trong dự án phần mềm.</p>
+        <ul>
+          <li>Lập kế hoạch kiểm thử tổng thể cho dự án.</li>
+          <li>Phân bổ và quản lý đội ngũ kiểm thử viên.</li>
+          <li>Giám sát tiến độ và chất lượng công việc kiểm thử.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="slide" id="slide-3">
+      <div class="content">
+        <i class="fas fa-paint-brush icon"></i>
+        <h1>Nhà thiết kế UI/UX</h1>
+        <p><strong>SGK:</strong> Giao diện người dùng (UI) là các biểu tượng, dải lệnh, nút lệnh, bảng chọn,... mà người dùng nhìn thấy và thao tác khi sử dụng phần mềm.</p>
+        <p><strong>Mô tả công việc:</strong> Tối ưu hóa trải nghiệm người dùng, từ lúc họ tiếp cận đến khi hoàn tất tương tác với sản phẩm.</p>
+        <ul>
+          <li>Nghiên cứu và phân tích hành vi người dùng.</li>
+          <li>Tạo wireframe và prototype cho ứng dụng.</li>
+          <li>Làm việc với nhóm phát triển và thiết kế để đảm bảo trải nghiệm tốt nhất.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="controls">
+      <button class="prev" onclick="moveSlide(-1)">&#10094;</button>
+      <button class="next" onclick="moveSlide(1)">&#10095;</button>
+    </div>
+  </div>
+
+  <!-- Footer Section -->
+  <footer>
+    <p>Tổ 1</p>
+  </footer>
+
+  <script>
+    let currentSlide = 0;
+const slides = document.querySelectorAll('.slide');
+const totalSlides = slides.length;
+
+
+function showSlide(index) {
+  slides.forEach(slide => slide.classList.remove('active'));
+  slides[index].classList.add('active');
+}
+
+
+function moveSlide(direction) {
+  currentSlide = (currentSlide + direction + totalSlides) % totalSlides;
+  showSlide(currentSlide);
+}
+
+
+function goToSlide(index) {
+  currentSlide = index;
+  showSlide(currentSlide);
+  resetInterval(); 
+}
+
+
+// let slideInterval = setInterval(() => {
+//   moveSlide(1);
+// }, 5000);
+
+function resetInterval() {
+  clearInterval(slideInterval);
+  slideInterval = setInterval(() => {
+    moveSlide(1);
+  }, 5000);
+}
+
+
+// showSlide(currentSlide);
+  </script>
+</body>
+</html>
